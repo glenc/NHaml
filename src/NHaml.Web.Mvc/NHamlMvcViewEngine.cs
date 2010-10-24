@@ -56,18 +56,43 @@ namespace NHaml.Web.Mvc
 
         private void InitializeViewLocations()
         {
-            ViewLocationFormats = new[]
+			ViewLocationFormats = new[]
             {
                 "~/Views/{1}/{0}.haml",
                 "~/Views/Shared/{0}.haml"
             };
 
-            MasterLocationFormats = new[]
+			MasterLocationFormats = new[]
             {
                 "~/Views/Shared/{0}.haml"
             };
 
-            PartialViewLocationFormats = ViewLocationFormats;
+			AreaViewLocationFormats = new[]
+            {
+                "~/Areas/{2}/Views/{1}/{0}.haml",
+                "~/Areas/{2}/Views/Shared/{0}.haml"
+            };
+
+			AreaMasterLocationFormats = new[] 
+ 	        { 
+ 	            "~/Areas/{2}/Views/Shared/{0}.haml" 
+ 	        };
+
+			PartialViewLocationFormats = new[]
+            {
+                "~/Views/{1}/_{0}.haml",
+                "~/Views/Shared/_{0}.haml",
+                "~/Views/{1}/{0}.haml",
+                "~/Views/Shared/{0}.haml"
+            };
+
+			AreaPartialViewLocationFormats = new[]
+            {
+                "~/Areas/{2}/Views/{1}/_{0}.haml",
+                "~/Areas/{2}/Views/Shared/_{0}.haml",
+                "~/Areas/{2}/Views/{1}/{0}.haml",
+                "~/Areas/{2}/Views/Shared/{0}.haml"
+            };
         }
 
         public override ViewEngineResult FindView(ControllerContext controllerContext, string viewName, string masterName, bool useCache)
